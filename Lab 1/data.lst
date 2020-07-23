@@ -1,0 +1,11 @@
+SQL> Select * from test;
+
+      TNUM STR                                                                  
+---------- ----------                                                           
+         1 A test                                                               
+        13 thirteen                                                             
+        10 ten                                                                  
+        11 eleven                                                               
+        12 twelve                                                               
+
+SQL> spool off

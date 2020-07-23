@@ -1,0 +1,47 @@
+Question 1:
+a) exec assignJobTitlesAndSalaries at SQL prompt. 
+b) Run a Select * on AlphaCoEmp table and check if titles and salaries are assigned. 
+c) Now, modify the above procedure and include one more job title and a salary for that title in the code. 
+d) Run the procedure. 
+e) Execute the procedure and make sure it is working ok. 
+
+Question 2:
+a) If you want to test the function and see if it is working ok, call it as follows: 
+	Select calcSalaryRaise('Stone',2) from Dual; 
+b) Call the function as part of a more useful SQL query 
+	Select name, title, salary CURRENTSALARY, trunc(calcSalaryRaise(name,2)) NEWSALARY 
+from AlphaCoEmp where upper(name) = upper('Stone'); 
+What is the output?------------------------ 
+
+NAME			  TITLE 	       CURRENTSALARY  NEWSALARY
+------------------------- -------------------- ------------- ----------
+Stone						       71850	   1437
+
+
+c) If you examine the code of the function, we are comparing (string compare) the name with the parameter, p_name without checking the case. Modify the code so that both strings are compared with each other, both in upper or lowercase. 
+Test and make sure your function work correctly after modifications.
+d) What happens if you call the function with a name that NOT in the AlphaEoEmp table? 
+Select calcSalaryRaise('Choose a name that is not in the AlphaCoEmp ',2) from Dual; 
+
+Nothing gets output 
+
+Now let us rewrite the function with an exception.
+Test your function again with a name that is not in the table.
+
+Question 3:
+a) Let us create a table called EmpStats
+b) Complete the function and run it. 
+c) Run the SQL commands below and show the output. 
+select countByTitle('director') from Dual; 
+select countByTitle('advisor') from Dual;
+
+Question 4:
+a) Complete the procedure to store the count of employees for every title you have in AlphaCoEmp table. 
+b) Execute the procedure. 
+c) Show the data in the EmpStats table (do a Select * ). 
+
+Question 5:
+a) Write a PLSQL function called countBySalaryRange() that takes two parameters, called lowEnd and highEnd, both numbers. The function counts the no.of employees in AlphaCoEmp table, whose salaries fall with in the range between lowEnd and highEnd (both numbers inclusive) and returns the count.
+b) Check if your function is created without errors.
+c) Now, call the function, countBySalaryRange() with two values of your choice for the parameters and display the value returned.
+d) Show how you call countBySalaryRange() with two values of your choice for the parameters and display the value returned with an appropriate column heading.

@@ -1,0 +1,189 @@
+SQL> start /home/jlin3/Desktop/Lab2.sql;
+
+Table created.
+
+
+Table created.
+
+
+Table created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+SQL> start /home/jlin3/Desktop/lab2_queries1.sql;
+
+CUSTI FULLNAME                  CITY                                            
+----- ------------------------- ----------                                      
+c1    JohnSmith                 SJ                                              
+c2    MaryJones                 SFO                                             
+a1    VincentChen               SJ                                              
+a12   GregKing                  SJ                                              
+c7    JamesBond                 LA                                              
+x10   SusanBlogg                SFO                                             
+y23   EasonLiu                  LA                                              
+a11   EthanPaik                 SJ                                              
+
+8 rows selected.
+
+
+CUSTI FIRSTNAME  LASTNAME        CITY                                           
+----- ---------- --------------- ----------                                     
+x10   Susan      Blogg           SFO                                            
+c7    James      Bond            LA                                             
+a1    Vincent    Chen            SJ                                             
+c2    Mary       Jones           SFO                                            
+a12   Greg       King            SJ                                             
+y23   Eason      Liu             LA                                             
+a11   Ethan      Paik            SJ                                             
+c1    John       Smith           SJ                                             
+
+8 rows selected.
+
+
+SERVICEID  CUSTI DA                                                             
+---------- ----- --                                                             
+dby3       x10   f                                                              
+deg5       a11   r                                                              
+dsg1       c1    m                                                              
+dsg2       a12   w                                                              
+dsm2       y23   t                                                              
+dsw4       c7    t                                                              
+
+6 rows selected.
+
+
+SERVICEID                                                                       
+----------                                                                      
+dg5                                                                             
+dsb1                                                                            
+
+
+no rows selected
+
+
+LASTNAME                                                                        
+---------------                                                                 
+Smith                                                                           
+King                                                                            
+Blogg                                                                           
+Paik                                                                            
+Bond                                                                            
+Liu                                                                             
+
+6 rows selected.
+
+
+HIGHEST_SERVICEFEE                                                              
+------------------                                                              
+                30                                                              
+
+
+CUSTI CUSTI CITY                                                                
+----- ----- ----------                                                          
+x10   c2    SFO                                                                 
+a11   a1    SJ                                                                  
+a12   a1    SJ                                                                  
+c1    a1    SJ                                                                  
+c1    a12   SJ                                                                  
+y23   c7    LA                                                                  
+a12   a11   SJ                                                                  
+c1    a11   SJ                                                                  
+
+8 rows selected.
+
+SQL> start /home/jlin3/Desktop/lab2_queries2.sql;
+
+MAXIMUM_SALARY                                                                  
+--------------                                                                  
+        179700                                                                  
+
+
+MINIMUM_SALARY                                                                  
+--------------                                                                  
+             0                                                                  
+
+
+NAME                                                                            
+----------------------------------------                                        
+ Bradley J.Kiley                                                                
+ Anna S.Kim                                                                     
+ Astri B.Kimball                                                                
+ Taeshonnda C.King                                                              
+
+
+NAME                                                                            
+----------------------------------------                                        
+ Michael M.Hash                                                                 
+ Timothy P.Love                                                                 
+
+
+TITLE                                                                           
+--------------------------------------------------------------------------------
+POLICY DIRECTOR                                                                 
+DEPUTY DIRECTOR                                                                 
+
+SQL> spool off;

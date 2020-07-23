@@ -1,0 +1,14 @@
+SQL> start /home/jlin3/Desktop/lab8.sql
+
+Table created.
+
+
+Procedure created.
+
+SQL> select * from moviereviews;
+
+MOVIENAME		  COMMENTS
+------------------------- ----------------------------------------
+bee movie		  bee love is true love
+
+

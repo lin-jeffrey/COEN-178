@@ -1,0 +1,268 @@
+SQL> Create table BANKCUST_6 (custno VARCHAR(5) Primary Key,custname VARCHAR(20),street VARCHAR(30), city VARCHAR(20));
+
+Table created.
+
+SQL> Create table ACCOUNTS_6 (AccountNo VARCHAR(5) Primary Key,accountType VARCHAR(10), amount NUMBER(10,2), custno varchar(5),
+CONSTRAINT accounts_fkey FOREIGN Key (custno)REFERENCES BANKCUST_6(custno));  2  
+
+Table created.
+
+SQL> Create table TOTALS_6 (custno VARCHAR(5), totalAmount Number(10,2), CONSTRAINT totals_fkey FOREIGN Key (custno)REFERENCES BANKCUST_6(custno));
+
+Table created.
+
+SQL> set serveroutput on;
+
+SQL> CREATE or REPLACE TRIGGER display_customer_trig
+   AFTER  INSERT on BankCust_6
+   FOR EACH ROW	
+BEGIN    
+	DBMS_OUTPUT.PUT_LINE('From Trigger '||'Customer NO: '||:new.custno||' Customer Name: '||:new.custname);
+END;
+/
+show errors;  2    3    4    5    6    7  
+Trigger created.
+
+insert into BANKCUST_6 values('c3','Peters','12 palm st','SFO');
+insert into BANKCUST_6 values('c20','Chen','20 san felipo','LA');
+insert into BANKCUST_6 values('c33','Williams',' 11 cherry Ave','SFO');
+
+SQL> start /home/jlin3/Desktop/lab6.sql;
+
+Trigger created.
+
+SQL> Alter trigger display_customer_trig disable;
+
+Trigger altered.
+
+SQL> start /home/jlin3/Desktop/lab6.sql;
+
+
+SQL> insert into ACCOUNTS_6 values('a1523','checking',2000.00,'c1');
+insert into ACCOUNTS_6 values('a2134','saving',5000.00,'c1');
+insert into ACCOUNTS_6 values('a4378','checking',1000.00,'c2');
+insert into ACCOUNTS_6 values('a5363','saving',8000.00,'c2');
+insert into ACCOUNTS_6 values('a7236','checking',500.00,'c33');
+insert into ACCOUNTS_6 values('a8577','checking',150.00,'c20');
+1 row created.
+
+SQL> 
+1 row created.
+
+SQL> 
+1 row created.
+
+SQL> 
+1 row created.
+
+SQL> 
+1 row created.
+
+SQL> 
+
+1 row created.
+
+SQL> select * from totals_6;
+
+CUSTN TOTALAMOUNT
+----- -----------
+c1	    14000
+c2	    18000
+c33	     1000
+c20	      300
+
+SQL> update Accounts_6
+set amount = 1000
+where accountno = 'a1523';  2    3  
+
+1 row updated.
+
+SQL> select * from totals_6;
+
+CUSTN TOTALAMOUNT
+----- -----------
+c1	    14000
+c2	    18000
+c33	     1000
+c20	      300
+
+SQL> start /home/jlin3/Desktop/lab6.sql
+
+Trigger created.
+
+No errors.
+
+SQL> insert into ACCOUNTS_6 values('a1523','checking',2000.00,'c1');
+insert into ACCOUNTS_6 values('a2134','saving',5000.00,'c1');
+insert into ACCOUNTS_6 values('a4378','checking',1000.00,'c2');
+insert into ACCOUNTS_6 values('a5363','saving',8000.00,'c2');
+insert into ACCOUNTS_6 values('a7236','checking',500.00,'c33');
+insert into ACCOUNTS_6 values('a8577','checking',150.00,'c20');
+1 row created.
+
+SQL> 
+1 row created.
+
+SQL> 
+1 row created.
+
+SQL> 
+1 row created.
+
+SQL> 
+1 row created.
+
+SQL> 
+
+1 row created.
+
+SQL> 
+SQL> Select * from totals_6;
+
+CUSTN TOTALAMOUNT
+----- -----------
+c1	     7000
+c2	     9000
+c33	      500
+c20	      150
+
+SQL> update Accounts_6
+set amount = 1000
+where accountno = 'a1523';  2    3  
+
+1 row updated.
+
+SQL> select * from totals_6;
+
+CUSTN TOTALAMOUNT
+----- -----------
+c1	     8000
+c2	     9000
+c33	      500
+c20	      150
+
+SQL> start /home/jlin3/Desktop/lab6.sql
+
+Trigger created.
+
+No errors.
+
+SQL> start /home/jlin3/Desktop/lab6.sql
+UPDATE BANKCUST_6
+       *
+ERROR at line 1:
+ORA-20999: Cannot update a Primary Key
+ORA-06512: at "JLIN3.NOUPDATEPK_TRIG", line 3
+ORA-04088: error during execution of trigger 'JLIN3.NOUPDATEPK_TRIG'
+
+SQL> Create table M_Student (stno varchar(3) primary key, name varchar(20));
+
+Table created.
+
+SQL> Create table M_Course (courseno varchar(5) primary key, units Integer);
+
+Table created.
+
+SQL> Create table M_CoursesTaken (stno varchar(3),courseno varchar(5));
+
+Table created.
+
+SQL> Create table M_CourseRegister(stno varchar(3),courseno varchar(5));
+
+Table created.
+
+SQL> Create table M_PreReqCourse (courseno varchar(5), prereq varchar(5));
+
+Table created.
+
+SQL> start /home/jlin3/Desktop/lab6.sql
+
+Trigger created.
+
+No errors.
+
+SQL> start /home/jlin3/Desktop/lab6.sql
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+STN COURS
+--- -----
+s1  c1
+s1  c3
+
+No prereq
+insert into M_courseRegister values('s1','c4')
+            *
+ERROR at line 1:
+ORA-20010: prereqs not done
+ORA-06512: at "JLIN3.CHECKPREREQ_TRIG", line 34
+ORA-04088: error during execution of trigger 'JLIN3.CHECKPREREQ_TRIG'
+
+
+
+STN COURS
+--- -----
+s1  c1
+s1  c3
+
+
+1 row created.
+
+
+1 row created.
+
+
+STN COURS
+--- -----
+s1  c1
+s1  c3
+s1  c2
+s1  c4
+
+No prereq
+insert into M_courseRegister values('s2','c4')
+            *
+ERROR at line 1:
+ORA-20010: prereqs not done
+ORA-06512: at "JLIN3.CHECKPREREQ_TRIG", line 34
+ORA-04088: error during execution of trigger 'JLIN3.CHECKPREREQ_TRIG'
+
+
+

@@ -1,0 +1,226 @@
+SQL> start /home/jlin3/Desktop/lab7.sql
+
+Table created.
+
+
+Table created.
+
+
+Table created.
+
+SQL> start /home/jlin3/Desktop/lab7.sql
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+SQL> start /home/jlin3/Desktop/lab7.sql
+
+View created.
+
+
+View created.
+
+SQL> Select * from CurrentProjects;
+
+PROJE TITLE		   MANAG
+----- -------------------- -----
+pj1   Research		   e1
+pj3   Research		   e3
+pj4   Research		   e4
+
+SQL> Select * From PastProjects;
+
+TITLE		     MANAG
+-------------------- -----
+Research	     e2
+
+SQL> insert into CurrentProjects values ('p99','Testing','e2');
+
+1 row created.
+
+SQL> Select * From Project7;
+
+PROJE TITLE		       BUDGET STARTDATE ENDDATE   MANAG
+----- -------------------- ---------- --------- --------- -----
+pj1   Research		      1000000 10-JAN-19 20-FEB-20 e1
+pj2   Research		       100000 10-FEB-19 20-APR-19 e2
+pj3   Research		       500000 28-APR-19 20-FEB-20 e3
+pj4   Research		       250000 11-NOV-19 20-APR-20 e4
+p99   Testing						  				  e2
+
+SQL> CREATE VIEW ManagedProjects AS SELECT Project7.projectID AS Project_Title, EMP7.empName AS ManagerName FROM EMP7, Project7 WHERE EMP7.empid = Project7.managerId;
+
+View created.
+
+SQL> Select * From ManagedProjects;
+
+PROJE MANAGERNAME
+----- --------------------
+pj1   J.Smith
+pj2   M.Jones
+pj3   D.Clark
+pj4   J.Lin
+p99   M.Jones
+
+SQL> start /home/jlin3/Desktop/lab7.sql
+
+Table created.
+
+Trigger created.
+
+No errors.
+Insert into ItemOrder values ('o1',100)
+            *
+ERROR at line 1:
+ORA-04091: table JLIN3.ITEMORDER is mutating, trigger/function may not see it
+ORA-06512: at "JLIN3.ITEMORDER_AFTER_INSERT_TRIG", line 5
+ORA-04088: error during execution of trigger
+'JLIN3.ITEMORDER_AFTER_INSERT_TRIG'
+
+SQL> start /home/jlin3/Desktop/lab7.sql
+
+Table created.
+
+
+Table created.
+
+SQL> start /home/jlin3/Desktop/lab7.sql
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+SQL> start /home/jlin3/Desktop/lab7.sql
+
+Trigger created.
+
+No errors.
+
+1 row created.
+
+
+1 row created.
+
+
+  COURSENO   PREREQNO
+---------- ----------
+       121	   11
+       121	   10
+
+insert into Course_Prereq values (121,12)
+            *
+ERROR at line 1:
+ORA-20000: Only 2 prereqs for course
+ORA-06512: at "JLIN3.LIMITTEST", line 16
+ORA-04088: error during execution of trigger 'JLIN3.LIMITTEST'
+
+SQL> insert into Course_Prereq values (133,12);
+
+1 row created.
+
+SQL>  Select * from course_prereq;
+
+  COURSENO   PREREQNO
+---------- ----------
+       121	   11
+       121	   10
+       133	   12
+
+SQL> update COURSE_PREREQ
+set courseno = 121 where courseno= 133;  2  
+update COURSE_PREREQ
+       *
+ERROR at line 1:
+ORA-04091: table JLIN3.COURSE_PREREQ is mutating, trigger/function may not see
+it
+ORA-06512: at "JLIN3.LIMITTEST", line 6
+ORA-04088: error during execution of trigger 'JLIN3.LIMITTEST'
+
+SQL> start /home/jlin3/Desktop/lab7.sql;
+
+Trigger created.
+
+No errors.
+
+1 row created.
+
+
+1 row created.
+
+insert into Course_Prereq values (121,12)
+            *
+ERROR at line 1:
+ORA-20000: Only 2 prereqs for course
+ORA-06512: at "JLIN3.LIMITTEST", line 21
+ORA-04088: error during execution of trigger 'JLIN3.LIMITTEST'
+
+
+1 row created.
+
+SQL> select * from course_prereq;
+
+  COURSENO   PREREQNO
+---------- ----------
+       121	   11
+       121	   10
+       133	   12
+
+SQL> update COURSE_PREREQ
+set courseno = 121 where courseno= 133;  2  
+
+1 row updated.
+
+SQL> select * from course_prereq 
+  2  ;
+
+  COURSENO   PREREQNO
+---------- ----------
+       121	   11
+       121	   10
+       121	   12
+
+SQL> 
+
+

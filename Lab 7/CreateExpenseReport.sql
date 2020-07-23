@@ -1,0 +1,25 @@
+spool ExpReport.txt;
+
+TTITLE CENTER "Expense Report"
+BTITLE CENTER "Jeffrey Lin"
+SET UNDERLINE
+
+COLUMN expenseDate HEADING 'Date';
+COLUMN rent FORMAT $9999999,999.99 HEADING 'Rent';
+COLUMN entertainment FORMAT $9999999,999.99 HEADING 'Entertainment';
+COLUMN groceries FORMAT $9999999,999.99 HEADING 'Groceries';
+
+BREAK ON expenseDate SKIP 1 ON REPORT
+COMPUTE AVG LABEL average MAX LABEL maximum SUM LABEL total OF groceries entertainment rent ON REPORT;
+SELECT * FROM MyExpenses;
+
+spool off;
+
+CLEAR COLUMNS
+CLEAR BREAK
+TTITLE OFF 
+BTITLE OFF
+SET VERIFY OFF 
+SET FEEDBACK OFF
+SET RECSEP OFF
+SET ECHO OFF

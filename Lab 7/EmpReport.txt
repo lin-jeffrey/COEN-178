@@ -1,0 +1,21 @@
+
+                                           Employee Listing  November 11, 2019                                          
+                                                                                                                        
+Name                 Depar        Salary                                                                                
+-------------------- ----- -------------             $120,000                                                                                            
+J.Smith              d1         $100,000                                                                                
+M.Jones              d1         $120,000                                                                                
+D.Clark              d2         $200,000                                                                                
+J.Lin                d2         $130,000                                                                                
+E.Paek               d1         $180,000                                                                                
+
+
+
+
+
+
+
+
+
+                                          $120,000                                    COEN 178 Lab-7                                                     
+  $120,000                         $120,000                       

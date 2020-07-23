@@ -1,0 +1,1663 @@
+SQL> CREATE TABLE AlphaCoEmp(Name VARCHAR(25) Primary Key, Title VARCHAR(20) DEFAULT NULL, Salary Number(10,2) DEFAULT 0);
+
+INSERT INTO AlphaCoEmp (name) SELECT DISTINCT last from Staff_2020;
+Table created.
+
+SQL> SQL> 
+\
+420 rows created.
+
+SQL> Create Table Emp_Work(name VARCHAR(25) Primary Key, Project VARCHAR(20) default NULL, Constraint FK_AlphaCo Foreign Key (name) REFERENCES AlphaCoEmp(name));
+SP2-0734: unknown command beginning "\Create Ta..." - rest of line ignored.
+SQL> 
+SQL> Create Table Emp_Work(name VARCHAR(25) Primary Key, Project VARCHAR(20) default NULL, Constraint FK_AlphaCo Foreign Key (name) REFERENCES AlphaCoEmp(name));
+
+Table created.
+
+SQL> insert into Emp_Work(name) Select Name from AlphaCoEmp where REGEXP_LIKE(name,'(^[ags])','i'); 
+
+80 rows created.
+
+SQL> Select Name from AlphaCoEmp where REGEXP_LIKE(name,'(^[ags])','i');
+
+NAME
+-------------------------
+Abrams
+Adams
+Agnew
+Albino
+Alley
+Amorsingh
+Anderson
+Andrias
+Anello
+Asen
+Attili
+
+NAME
+-------------------------
+Axelrod
+AylingSQL> CREATE TABLE AlphaCoEmp(Name VARCHAR(25) Primary Key, Title VARCHAR(20) DEFAULT NULL, Salary Number(10,2) DEFAULT 0);
+
+INSERT INTO AlphaCoEmp (name) SELECT DISTINCT last from Staff_2020;
+Table created.
+
+SQL> SQL> 
+\
+420 rows created.
+
+SQL> Create Table Emp_Work(name VARCHAR(25) Primary Key, Project VARCHAR(20) default NULL, Constraint FK_AlphaCo Foreign Key (name) REFERENCES AlphaCoEmp(name));
+SP2-0734: unknown command beginning "\Create Ta..." - rest of line ignored.
+SQL> 
+SQL> Create Table Emp_Work(name VARCHAR(25) Primary Key, Project VARCHAR(20) default NULL, Constraint FK_AlphaCo Foreign Key (name) REFERENCES AlphaCoEmp(name));
+
+Table created.
+
+SQL> insert into Emp_Work(name) Select Name from AlphaCoEmp where REGEXP_LIKE(name,'(^[ags])','i'); 
+
+80 rows created.
+
+SQL> Select Name from AlphaCoEmp where REGEXP_LIKE(name,'(^[ags])','i');
+
+NAME
+-------------------------
+Abrams
+Adams
+Agnew
+Albino
+Alley
+Amorsingh
+Anderson
+Andrias
+Anello
+Asen
+Attili
+
+NAME
+-------------------------
+Axelrod
+Ayling
+Gage
+Garcia
+Gardaphe
+Gaspard
+Gibbs
+Gillette
+Godfrey
+Gomez
+Gonzalez
+
+NAME
+-------------------------
+Goodman
+Gottlieb
+Gottry
+Graham
+Grant
+Gray
+Green
+Greenawalt
+Greene
+Groth
+Sabochik
+
+NAME
+-------------------------
+Sahgal
+Samuels
+Sanders
+Santucci
+Sass
+Sathe
+Saunders
+Schafer
+Schaub
+Schiliro
+Schmuck
+
+NAME
+-------------------------
+Schuker
+Schulman
+Schwartz
+Setser
+Seymour
+Shah
+Shapiro
+Shaw
+Sheehy
+Sher
+Showers
+
+NAME
+-------------------------
+Sibley
+Siegel
+Simas
+Singiser
+Sinha
+Sirbu
+Skoczek
+Smith
+Smoot
+Sobel
+Spencer
+
+NAME
+-------------------------
+Starkey
+Stephens
+Stickel
+Stoev
+Stone
+Stoneman
+Stracko
+Strautmanis
+Summers
+Sutphen
+Sutton
+
+NAME
+-------------------------
+Swanson
+Sweeney
+Swire
+
+80 rows selected.
+
+SQL> Delete from AlphaCoEmp Where name='Smith';
+Delete from AlphaCoEmp Where name='Smith'
+*
+ERROR at line 1:
+ORA-02292: integrity constraint (JLIN3.FK_ALPHACO) violated - child record
+found
+
+
+SQL> alter table Emp_Work drop constraint FK_AlphaCo;
+
+Table altered.
+
+SQL> Alter table Emp_Work add constraint FK_AlphaCo FOREIGN KEY (name)references AlphaCoEmp(name) on delete cascade;
+
+Table altered.
+
+SQL> delete from AlphaCoEmp where name='Smith';
+
+1 row deleted.
+
+
+Gage
+Garcia
+Gardaphe
+Gaspard
+Gibbs
+Gillette
+Godfrey
+Gomez
+Gonzalez
+
+NAME
+-------------------------
+Goodman
+Gottlieb
+Gottry
+Graham
+Grant
+Gray
+Green
+Greenawalt
+Greene
+Groth
+Sabochik
+
+NAME
+-------------------------
+Sahgal
+Samuels
+Sanders
+Santucci
+Sass
+Sathe
+Saunders
+Schafer
+Schaub
+Schiliro
+Schmuck
+
+NAME
+-------------------------
+Schuker
+Schulman
+Schwartz
+Setser
+Seymour
+Shah
+Shapiro
+Shaw
+Sheehy
+Sher
+Showers
+
+NAME
+-------------------------
+Sibley
+Siegel
+Simas
+Singiser
+Sinha
+Sirbu
+Skoczek
+Smith
+Smoot
+Sobel
+Spencer
+
+NAME
+-------------------------
+Starkey
+Stephens
+Stickel
+Stoev
+Stone
+Stoneman
+Stracko
+Strautmanis
+Summers
+Sutphen
+Sutton
+
+NAME
+-------------------------
+Swanson
+Sweeney
+Swire
+
+80 rows selected.
+
+SQL> Delete from AlphaCoEmp Where name='Smith';
+Delete from AlphaCoEmp Where name='Smith'
+*
+ERROR at line 1:
+ORA-02292: integrity constraint (JLIN3.FK_ALPHACO) violated - child record
+found
+
+
+SQL> alter table Emp_Work drop constraint FK_AlphaCo;
+
+Table altered.
+
+SQL> Alter table Emp_Work add constraint FK_AlphaCo FOREIGN KEY (name)references AlphaCoEmp(name) on delete cascade;
+
+Table altered.
+
+SQL> delete from AlphaCoEmp where name='Smith';
+
+1 row deleted.
+
+Create or Replace Procedure DisplayMessage(message in VARCHAR)
+As
+BEGIN
+	DBMS_OUTPUT.put_line('Hello '||message);
+END;
+/
+Show Errors;
+
+Procedure created.
+
+SQL> No errors.
+
+SQL> exec DisplayMessage('include a message');
+Hello include a message
+
+PL/SQL procedure successfully completed.
+
+SQL> Select ROUND(DBMS_RANDOM.value (10,100)) from DUAL;
+
+ROUND(DBMS_RANDOM.VALUE(10,100))
+--------------------------------
+			      16
+
+SQL> select * from AlphaCoEmp;
+
+NAME			  TITLE 		   SALARY
+------------------------- -------------------- ----------
+Maher							0
+Messina 						0
+Newell							0
+Noel							0
+Oleske							0
+Page							0
+Psaki							0
+Reinstein						0
+Roche							0
+Rouse							0
+Sathe							0
+
+NAME			  TITLE 		   SALARY
+------------------------- -------------------- ----------
+Schulman						0
+Seymour 						0
+Shapiro 						0
+Shaw							0
+Sher							0
+Showers 						0
+Siegel							0
+Sirbu							0
+Stephens						0
+Sutton							0
+Terry							0
+
+NAME			  TITLE 		   SALARY
+------------------------- -------------------- ----------
+Vanderslice						0
+Alley							0
+Anello							0
+Barnes							0
+Bates							0
+Bedingfield						0
+Chaifetz						0
+Clarke							0
+Cobbina 						0
+Crutchfield						0
+Dalheim 						0
+
+NAME			  TITLE 		   SALARY
+------------------------- -------------------- ----------
+Adams							0
+Ealons							0
+Escobar 						0
+Farrell 						0
+Gaspard 						0
+Groth							0
+Heimbach						0
+Jawando 						0
+Kennedy 						0
+Konwinski						0
+Lewis							0
+
+NAME			  TITLE 		   SALARY
+------------------------- -------------------- ----------
+Liddell-Westefeld					0
+Limon							0
+Loeb							0
+London							0
+Wear							0
+White							0
+Yeager Kaplan						0
+Lynn							0
+Mackey							0
+McCarthy						0
+McGinnis						0
+
+NAME			  TITLE 		   SALARY
+------------------------- -------------------- ----------
+McGuire 						0
+Mosteller						0
+Mueller 						0
+Murtha							0
+Onek							0
+Papas							0
+Parker							0
+Paulsen 						0
+Quinn							0
+Raizk							0
+Reed							0
+
+NAME			  TITLE 		   SALARY
+------------------------- -------------------- ----------
+Ryan							0
+Sahgal							0
+Sass							0
+Schafer 						0
+Schwartz						0
+Sibley							0
+Singiser						0
+Starkey 						0
+Swanson 						0
+Tamarin 						0
+Tchen							0
+
+NAME			  TITLE 		   SALARY
+------------------------- -------------------- ----------
+Turton							0
+Agnew							0
+Bauer							0
+Beliveau						0
+Bhowmik 						0
+Brennan 						0
+Buffett 						0
+Carrier 						0
+Cherlin 						0
+Cizner							0
+Cokley							0
+
+NAME			  TITLE 		   SALARY
+------------------------- -------------------- ----------
+Colvin							0
+Cuellar 						0
+Cutter							0
+Deese							0
+Dillon							0
+Donilon 						0
+Dorsett 						0
+Fernandez						0
+Frank							0
+Frankel 						0
+Frye							0
+
+NAME			  TITLE 		   SALARY
+------------------------- -------------------- ----------
+Gonzalez						0
+Graham							0
+Hoang							0
+Hopkins 						0
+Inouye							0
+Johnson 						0
+Larus							0
+Voorman 						0
+Watson							0
+Wright							0
+Lovett							0
+
+NAME			  TITLE 		   SALARY
+------------------------- -------------------- ----------
+Martin							0
+Massey							0
+Mattson 						0
+McDonough						0
+Milakofsky						0
+Miranda 						0
+Mu??oz							0
+Muntz							0
+Odio							0
+Pojman							0
+Pope							0
+
+NAME			  TITLE 		   SALARY
+------------------------- -------------------- ----------
+Rodriguez						0
+Sutphen 						0
+Thomas							0
+Asen							0
+Belive							0
+Browner 						0
+Brundage						0
+Brush							0
+Cardwell						0
+Chen							0
+Chiodo							0
+
+NAME			  TITLE 		   SALARY
+------------------------- -------------------- ----------
+Corrigan						0
+Crowley 						0
+Davies							0
+Devine							0
+Edgerton						0
+Edmonds 						0
+Eisen							0
+Espinel 						0
+Favreau 						0
+Gardaphe						0
+Gillette						0
+
+NAME			  TITLE 		   SALARY
+------------------------- -------------------- ----------
+Gomez							0
+Gottry							0
+Grant							0
+Green							0
+Harper							0
+Hughes							0
+Hurwitz 						0
+Juska							0
+Kammerer						0
+Kimball 						0
+Kommareddi						0
+
+NAME			  TITLE 		   SALARY
+------------------------- -------------------- ----------
+Kravis							0
+LaBolt							0
+Lerner							0
+Lewin							0
+Lippert 						0
+Zichal							0
+Lu							0
+Naidoff 						0
+Narechania						0
+Oxtoby							0
+Pipkins 						0
+
+NAME			  TITLE 		   SALARY
+------------------------- -------------------- ----------
+Portilla						0
+Posey							0
+Richardson						0
+Rittner 						0
+Roach							0
+Ruemmler						0
+Samuels 						0
+Schmuck 						0
+Simas							0
+Skoczek 						0
+Spencer 						0
+
+NAME			  TITLE 		   SALARY
+------------------------- -------------------- ----------
+Trainor 						0
+Tranchin						0
+Turk							0
+Valencia						0
+Ayling							0
+Becnel							0
+Binns							0
+Birdsall						0
+Bond							0
+Branch							0
+Brewer							0
+
+NAME			  TITLE 		   SALARY
+------------------------- -------------------- ----------
+Brown							0
+Campos							0
+Carter							0
+Claude							0
+Cohen							0
+Davis							0
+Dunn							0
+Edwards 						0
+Emanuel 						0
+Faulman 						0
+Greene							0
+
+NAME			  TITLE 		   SALARY
+------------------------- -------------------- ----------
+Hegde							0
+Hernandez						0
+Hiatt							0
+Hogan							0
+Kochman 						0
+Koo							0
+Krass							0
+Lartey							0
+Leitner-Laserna 					0
+Lelyveld						0
+Lezotte 						0
+
+NAME			  TITLE 		   SALARY
+------------------------- -------------------- ----------
+Liegel							0
+Lillie							0
+Vogel							0
+Wade							0
+Love							0
+Maska							0
+McGrath 						0
+Metcalf 						0
+Mrazek							0
+Neralla 						0
+Paige							0
+
+NAME			  TITLE 		   SALARY
+------------------------- -------------------- ----------
+Papa							0
+Pfeiffer						0
+Phadke							0
+Pulliam 						0
+Schuker 						0
+Smoot							0
+Stickel 						0
+Stoev							0
+Stone							0
+Summers 						0
+Sweeney 						0
+
+NAME			  TITLE 		   SALARY
+------------------------- -------------------- ----------
+Teehee							0
+Tennison						0
+Terrell 						0
+Tucker							0
+Albino							0
+Anderson						0
+Baldassaro						0
+Beinart 						0
+Blake							0
+Chambers						0
+Coven							0
+
+NAME			  TITLE 		   SALARY
+------------------------- -------------------- ----------
+Cuba							0
+Cunningham						0
+DeGuzman						0
+DeRosa							0
+Fenn							0
+Finlen							0
+Fiscus							0
+Fitts							0
+Ford							0
+Gage							0
+Gray							0
+
+NAME			  TITLE 		   SALARY
+------------------------- -------------------- ----------
+Hanson							0
+Harris							0
+Hash							0
+Jabbour 						0
+Jackson 						0
+Jarrett 						0
+Jarvis-Shean						0
+Jean-Pierre						0
+Kalbaugh						0
+Kale							0
+Kelly							0
+
+NAME			  TITLE 		   SALARY
+------------------------- -------------------- ----------
+Levine							0
+Watkins 						0
+Webster 						0
+Young							0
+Zelman							0
+Markovitz						0
+McBride 						0
+McNeal							0
+Monteiro						0
+Nathan							0
+Neiman							0
+
+NAME			  TITLE 		   SALARY
+------------------------- -------------------- ----------
+Ocampo							0
+Offerman						0
+Olmos							0
+Olson							0
+Ortiz							0
+Pate							0
+Pourmorad						0
+Rivadeneira						0
+Robertson						0
+Rosalsky						0
+Sabochik						0
+
+NAME			  TITLE 		   SALARY
+------------------------- -------------------- ----------
+Sanders 						0
+Schiliro						0
+Shah							0
+Sheehy							0
+Strautmanis						0
+Swire							0
+Thorbjornsen						0
+Tubman							0
+Tucci							0
+Bassin							0
+Bressler						0
+
+NAME			  TITLE 		   SALARY
+------------------------- -------------------- ----------
+Burman							0
+Carden							0
+Douglas 						0
+DuBois							0
+Dyer							0
+Earnest 						0
+Firestone						0
+Garcia							0
+Hennigan						0
+Hornsby 						0
+Hurley							0
+
+NAME			  TITLE 		   SALARY
+------------------------- -------------------- ----------
+Jamison 						0
+Kim							0
+King							0
+Kramer							0
+Lee							0
+Leger							0
+Lepow							0
+Lorjuste						0
+Vietor							0
+Wang-Levine						0
+Witt							0
+
+NAME			  TITLE 		   SALARY
+------------------------- -------------------- ----------
+McCathran						0
+Mehrbani						0
+Millison						0
+Moilanen						0
+Nabors							0
+Nelson							0
+Northern						0
+Rathod							0
+Reeves							0
+Santucci						0
+Saunders						0
+
+NAME			  TITLE 		   SALARY
+------------------------- -------------------- ----------
+Schaub							0
+Sinha							0
+Tate-Gilmore						0
+Verrilli						0
+Abrams							0
+Attili							0
+Axelrod 						0
+Bernard 						0
+Beverly 						0
+Burton							0
+Campoverdi						0
+
+NAME			  TITLE 		   SALARY
+------------------------- -------------------- ----------
+Camu??ez						0
+Castillo						0
+Chhabra 						0
+Conrad							0
+Cusack							0
+DeParle 						0
+Donovan 						0
+Droege							0
+Fernkas 						0
+Flatgard						0
+Freeman 						0
+
+NAME			  TITLE 		   SALARY
+------------------------- -------------------- ----------
+Godfrey 						0
+Goodman 						0
+Greenawalt						0
+Jarvis							0
+Jones							0
+Jung							0
+Kocher							0
+Kumar							0
+Lechtenberg						0
+Ledbetter						0
+Lesser							0
+
+NAME			  TITLE 		   SALARY
+------------------------- -------------------- ----------
+Lipton							0
+Walsh							0
+Winter							0
+Luck							0
+Mack							0
+Mastromonaco						0
+Mayekar 						0
+McLaughlin						0
+Millett 						0
+Nguyen							0
+Odintz							0
+
+NAME			  TITLE 		   SALARY
+------------------------- -------------------- ----------
+Perez							0
+Roberts 						0
+Roddick 						0
+Rundlet 						0
+Setser							0
+Smith							0
+Sobel							0
+Stoneman						0
+Stracko 						0
+Tseggai 						0
+Utech							0
+
+NAME			  TITLE 		   SALARY
+------------------------- -------------------- ----------
+Vale							0
+Vega							0
+Amorsingh						0
+Andrias 						0
+Baggetto						0
+Bisi							0
+Block							0
+Blount							0
+Bookey-Baker						0
+Brooke							0
+Burnough						0
+
+NAME			  TITLE 		   SALARY
+------------------------- -------------------- ----------
+Campbell						0
+Canery							0
+Cushman 						0
+Dale							0
+Fergenson						0
+Finkenbinder						0
+Furman							0
+Gibbs							0
+Gottlieb						0
+Hable							0
+Higginbottom						0
+
+NAME			  TITLE 		   SALARY
+------------------------- -------------------- ----------
+Hitchcock						0
+Johnston						0
+Kang							0
+Keenan							0
+Kiley							0
+Kohnke							0
+Lehrich 						0
+Lipsky							0
+Weiser							0
+Whitty							0
+Williams						0
+
+NAME			  TITLE 		   SALARY
+------------------------- -------------------- ----------
+Wilson							0
+Wong							0
+
+420 rows selected.
+
+SQL> start /home/jlin3/Desktop/lab4.sql;
+
+Procedure created.
+
+No errors.
+
+PL/SQL procedure successfully completed.
+
+
+NAME			  TITLE 		   SALARY
+------------------------- -------------------- ----------
+Maher						    87540
+Messina 					    93561
+Newell						    69233
+Noel						    89474
+Oleske						    94947
+Page						    81030
+Psaki						    87749
+Reinstein					    75194
+Roche						    74495
+Rouse						    81931
+Sathe						    57127
+
+NAME			  TITLE 		   SALARY
+------------------------- -------------------- ----------
+Schulman					    76041
+Seymour 					    99830
+Shapiro 					    97761
+Shaw						    72887
+Sher						    90284
+Showers 					    81060
+Siegel						    78516
+Sirbu						    52840
+Stephens					    60007
+Sutton						    74519
+Terry						    59499
+
+NAME			  TITLE 		   SALARY
+------------------------- -------------------- ----------
+Vanderslice					    60458
+Alley						    77151
+Anello						    51426
+Barnes						    60290
+Bates						    81191
+Bedingfield					    63764
+Chaifetz					    69052
+Clarke						    58028
+Cobbina 					    52820
+Crutchfield					    62778
+Dalheim 					    98999
+
+NAME			  TITLE 		   SALARY
+------------------------- -------------------- ----------
+Adams						    73740
+Ealons						    63637
+Escobar 					    89090
+Farrell 					    81954
+Gaspard 					    74856
+Groth						    50200
+Heimbach					    76684
+Jawando 					    92902
+Kennedy 					    69074
+Konwinski					    99881
+Lewis						    85054
+
+NAME			  TITLE 		   SALARY
+------------------------- -------------------- ----------
+Liddell-Westefeld				    68039
+Limon						    52915
+Loeb						    53015
+London						    90613
+Wear						    75096
+White						    56894
+Yeager Kaplan					    61823
+Lynn						    62055
+Mackey						    60459
+McCarthy					    96670
+McGinnis					    83139
+
+NAME			  TITLE 		   SALARY
+------------------------- -------------------- ----------
+McGuire 					    88965
+Mosteller					    53851
+Mueller 					    50424
+Murtha						    53238
+Onek						    63999
+Papas						    89057
+Parker						    90569
+Paulsen 					    87972
+Quinn						    73495
+Raizk						    55671
+Reed						    70764
+
+NAME			  TITLE 		   SALARY
+------------------------- -------------------- ----------
+Ryan						    65131
+Sahgal						    81784
+Sass						    72617
+Schafer 					    73087
+Schwartz					    66967
+Sibley						    73962
+Singiser					    97590
+Starkey 					    52721
+Swanson 					    95061
+Tamarin 					    92558
+Tchen						    62414
+
+NAME			  TITLE 		   SALARY
+------------------------- -------------------- ----------
+Turton						    63473
+Agnew						    67764
+Bauer						    76522
+Beliveau					    67185
+Bhowmik 					    93014
+Brennan 					    75819
+Buffett 					    79511
+Carrier 					    54698
+Cherlin 					    85959
+Cizner						    51743
+Cokley						    52850
+
+NAME			  TITLE 		   SALARY
+------------------------- -------------------- ----------
+Colvin						    74164
+Cuellar 					    66875
+Cutter						    53089
+Deese						    71011
+Dillon						    65425
+Donilon 					    88172
+Dorsett 					    50178
+Fernandez					    98573
+Frank						    89838
+Frankel 					    65012
+Frye						    66839
+
+NAME			  TITLE 		   SALARY
+------------------------- -------------------- ----------
+Gonzalez					    90656
+Graham						    76002
+Hoang						    69982
+Hopkins 					    64574
+Inouye						    72686
+Johnson 					    59615
+Larus						    56885
+Voorman 					    54613
+Watson						    72873
+Wright						    60143
+Lovett						    50903
+
+NAME			  TITLE 		   SALARY
+------------------------- -------------------- ----------
+Martin						    65487
+Massey						    71036
+Mattson 					    93437
+McDonough					    79056
+Milakofsky					    93510
+Miranda 					    93756
+Mu??oz						    76528
+Muntz						    89715
+Odio						    76345
+Pojman						    79835
+Pope						    87639
+
+NAME			  TITLE 		   SALARY
+------------------------- -------------------- ----------
+Rodriguez					    68220
+Sutphen 					    52796
+Thomas						    88042
+Asen						    61259
+Belive						    67145
+Browner 					    72535
+Brundage					    87428
+Brush						    67733
+Cardwell					    61900
+Chen						    83215
+Chiodo						    88416
+
+NAME			  TITLE 		   SALARY
+------------------------- -------------------- ----------
+Corrigan					    83454
+Crowley 					    82339
+Davies						    99207
+Devine						    76800
+Edgerton					    99898
+Edmonds 					    80432
+Eisen						    52384
+Espinel 					    64841
+Favreau 					    86862
+Gardaphe					    67230
+Gillette					    73886
+
+NAME			  TITLE 		   SALARY
+------------------------- -------------------- ----------
+Gomez						    67602
+Gottry						    95932
+Grant						    96599
+Green						    64767
+Harper						    91953
+Hughes						    77887
+Hurwitz 					    76523
+Juska						    78409
+Kammerer					    77478
+Kimball 					    83232
+Kommareddi					    69634
+
+NAME			  TITLE 		   SALARY
+------------------------- -------------------- ----------
+Kravis						    78699
+LaBolt						    87261
+Lerner						    87127
+Lewin						    87109
+Lippert 					    60114
+Zichal						    77348
+Lu						    68785
+Naidoff 					    87828
+Narechania					    61289
+Oxtoby						    93597
+Pipkins 					    83242
+
+NAME			  TITLE 		   SALARY
+------------------------- -------------------- ----------
+Portilla					    64695
+Posey						    97836
+Richardson					    93336
+Rittner 					    59489
+Roach						    95893
+Ruemmler					    58597
+Samuels 					    63390
+Schmuck 					    56946
+Simas						    50231
+Skoczek 					    97437
+Spencer 					    83571
+
+NAME			  TITLE 		   SALARY
+------------------------- -------------------- ----------
+Trainor 					    64819
+Tranchin					    67563
+Turk						    79995
+Valencia					    89146
+Ayling						    93669
+Becnel						    50943
+Binns						    64906
+Birdsall					    50965
+Bond						    81534
+Branch						    61914
+Brewer						    75678
+
+NAME			  TITLE 		   SALARY
+------------------------- -------------------- ----------
+Brown						    70581
+Campos						    69448
+Carter						    59321
+Claude						    54148
+Cohen						    68683
+Davis						    68261
+Dunn						    63673
+Edwards 					    58438
+Emanuel 					    70103
+Faulman 					    81925
+Greene						    71722
+
+NAME			  TITLE 		   SALARY
+------------------------- -------------------- ----------
+Hegde						    60937
+Hernandez					    55420
+Hiatt						    92492
+Hogan						    73364
+Kochman 					    55343
+Koo						    84833
+Krass						    76754
+Lartey						    75846
+Leitner-Laserna 				    61048
+Lelyveld					    98051
+Lezotte 					    87197
+
+NAME			  TITLE 		   SALARY
+------------------------- -------------------- ----------
+Liegel						    58694
+Lillie						    76407
+Vogel						    80796
+Wade						    88053
+Love						    75020
+Maska						    78313
+McGrath 					    50319
+Metcalf 					    99742
+Mrazek						    86967
+Neralla 					    64179
+Paige						    52689
+
+NAME			  TITLE 		   SALARY
+------------------------- -------------------- ----------
+Papa						    74016
+Pfeiffer					    51984
+Phadke						    62019
+Pulliam 					    77749
+Schuker 					    59566
+Smoot						    67035
+Stickel 					    83493
+Stoev						    88871
+Stone						    71953
+Summers 					    58375
+Sweeney 					    88991
+
+NAME			  TITLE 		   SALARY
+------------------------- -------------------- ----------
+Teehee						    57311
+Tennison					    90927
+Terrell 					    85338
+Tucker						    73979
+Albino						    70423
+Anderson					    76789
+Baldassaro					    75954
+Beinart 					    99015
+Blake						    68731
+Chambers					    70607
+Coven						    52085
+
+NAME			  TITLE 		   SALARY
+------------------------- -------------------- ----------
+Cuba						    51377
+Cunningham					    57501
+DeGuzman					    84341
+DeRosa						    82461
+Fenn						    69002
+Finlen						    68002
+Fiscus						    50640
+Fitts						    72617
+Ford						    72793
+Gage						    55941
+Gray						    73706
+
+NAME			  TITLE 		   SALARY
+------------------------- -------------------- ----------
+Hanson						    72956
+Harris						    83170
+Hash						    52058
+Jabbour 					    90399
+Jackson 					    88836
+Jarrett 					    73703
+Jarvis-Shean					    98707
+Jean-Pierre					    84220
+Kalbaugh					    50040
+Kale						    55361
+Kelly						    78124
+
+NAME			  TITLE 		   SALARY
+------------------------- -------------------- ----------
+Levine						    94032
+Watkins 					    50386
+Webster 					    51218
+Young						    64842
+Zelman						    50974
+Markovitz					    77328
+McBride 					    69050
+McNeal						    70349
+Monteiro					    89053
+Nathan						    65556
+Neiman						    60190
+
+NAME			  TITLE 		   SALARY
+------------------------- -------------------- ----------
+Ocampo						    58357
+Offerman					    84445
+Olmos						    81020
+Olson						    95752
+Ortiz						    60206
+Pate						    89652
+Pourmorad					    56286
+Rivadeneira					    94812
+Robertson					    95658
+Rosalsky					    81331
+Sabochik					    72161
+
+NAME			  TITLE 		   SALARY
+------------------------- -------------------- ----------
+Sanders 					    59368
+Schiliro					    81325
+Shah						    74174
+Sheehy						    97682
+Strautmanis					    69129
+Swire						    61010
+Thorbjornsen					    75994
+Tubman						    54377
+Tucci						    96855
+Bassin						    64640
+Bressler					    52471
+
+NAME			  TITLE 		   SALARY
+------------------------- -------------------- ----------
+Burman						    52595
+Carden						    72342
+Douglas 					    85315
+DuBois						    59789
+Dyer						    88052
+Earnest 					    88352
+Firestone					    89693
+Garcia						    88173
+Hennigan					    82983
+Hornsby 					    64298
+Hurley						    58150
+
+NAME			  TITLE 		   SALARY
+------------------------- -------------------- ----------
+Jamison 					    53976
+Kim						    78921
+King						    62264
+Kramer						    80050
+Lee						    95122
+Leger						    68515
+Lepow						    94365
+Lorjuste					    65551
+Vietor						    72201
+Wang-Levine					    64730
+Witt						    59449
+
+NAME			  TITLE 		   SALARY
+------------------------- -------------------- ----------
+McCathran					    68206
+Mehrbani					    98068
+Millison					    70348
+Moilanen					    75851
+Nabors						    76968
+Nelson						    81705
+Northern					    65905
+Rathod						    84989
+Reeves						    91524
+Santucci					    68151
+Saunders					    82532
+
+NAME			  TITLE 		   SALARY
+------------------------- -------------------- ----------
+Schaub						    93672
+Sinha						    94234
+Tate-Gilmore					    69072
+Verrilli					    84103
+Abrams						    99899
+Attili						    77824
+Axelrod 					    89268
+Bernard 					    59109
+Beverly 					    53809
+Burton						    85307
+Campoverdi					    51082
+
+NAME			  TITLE 		   SALARY
+------------------------- -------------------- ----------
+Camu??ez					    71633
+Castillo					    61376
+Chhabra 					    69296
+Conrad						    66197
+Cusack						    63494
+DeParle 					    76561
+Donovan 					    98195
+Droege						    69106
+Fernkas 					    56304
+Flatgard					    82845
+Freeman 					    50540
+
+NAME			  TITLE 		   SALARY
+------------------------- -------------------- ----------
+Godfrey 					    72943
+Goodman 					    98194
+Greenawalt					    62283
+Jarvis						    91494
+Jones						    53957
+Jung						    73341
+Kocher						    81217
+Kumar						    56324
+Lechtenberg					    65515
+Ledbetter					    57970
+Lesser						    52384
+
+NAME			  TITLE 		   SALARY
+------------------------- -------------------- ----------
+Lipton						    73049
+Walsh						    63024
+Winter						    62163
+Luck						    57875
+Mack						    84390
+Mastromonaco					    77624
+Mayekar 					    98174
+McLaughlin					    50858
+Millett 					    73282
+Nguyen						    86362
+Odintz						    70825
+
+NAME			  TITLE 		   SALARY
+------------------------- -------------------- ----------
+Perez						    87502
+Roberts 					    64265
+Roddick 					    83842
+Rundlet 					    52412
+Setser						    75162
+Smith						    50811
+Sobel						    72210
+Stoneman					    67834
+Stracko 					    92064
+Tseggai 					    91094
+Utech						    80726
+
+NAME			  TITLE 		   SALARY
+------------------------- -------------------- ----------
+Vale						    55955
+Vega						    85728
+Amorsingh					    73030
+Andrias 					    57444
+Baggetto					    81116
+Bisi						    84148
+Block						    54784
+Blount						    67080
+Bookey-Baker					    56193
+Brooke						    58356
+Burnough					    64106
+
+NAME			  TITLE 		   SALARY
+------------------------- -------------------- ----------
+Campbell					    83796
+Canery						    69251
+Cushman 					    53686
+Dale						    93821
+Fergenson					    61668
+Finkenbinder					    77418
+Furman						    71477
+Gibbs						    55469
+Gottlieb					    77129
+Hable						    70347
+Higginbottom					    64804
+
+NAME			  TITLE 		   SALARY
+------------------------- -------------------- ----------
+Hitchcock					    56785
+Johnston					    50606
+Kang						    87445
+Keenan						    92305
+Kiley						    76167
+Kohnke						    91175
+Lehrich 					    73280
+Lipsky						    97418
+Weiser						    96242
+Whitty						    63925
+Williams					    88112
+
+NAME			  TITLE 		   SALARY
+------------------------- -------------------- ----------
+Wilson						    96079
+Wong						    70468
+
+420 rows selected.
+
+SQL> SELECT Salary, name FROM AlphaCoEmp WHERE Salary In (SELECT Salary FROM AlphaCoEmp WHERE Salary < 100000 AND Salary > 80000);
+
+    SALARY NAME
+---------- -------------------------
+     90613 Messina
+     84267 Noel
+     85983 Schulman
+     85033 Shapiro
+     90959 Siegel
+     93475 Sirbu
+     98641 Vanderslice
+     81869 Anello
+     87161 Bedingfield
+     87374 Chaifetz
+     96196 Clarke
+
+    SALARY NAME
+---------- -------------------------
+     82117 Crutchfield
+     93766 Dalheim
+     83698 Adams
+     94354 Groth
+     83045 Heimbach
+     84005 Konwinski
+     81825 Lewis
+     85392 Limon
+     92600 London
+     86505 White
+     99574 Lynn
+
+    SALARY NAME
+---------- -------------------------
+     97848 McCarthy
+     81330 McGinnis
+     85340 Paulsen
+     90471 Raizk
+     87316 Ryan
+     99907 Sass
+     84993 Sibley
+     99538 Swanson
+     85642 Tamarin
+     90319 Bauer
+     99983 Beliveau
+
+    SALARY NAME
+---------- -------------------------
+     83713 Bhowmik
+     86735 Brennan
+     94044 Carrier
+     91670 Cherlin
+     88730 Cizner
+     97857 Cokley
+     83338 Cuellar
+     88788 Deese
+     85139 Dorsett
+     93412 Frank
+     85215 Voorman
+
+    SALARY NAME
+---------- -------------------------
+     96932 Martin
+     99950 Odio
+     86887 Belive
+     89400 Browner
+     98337 Brundage
+     98801 Brush
+     96688 Chen
+     98609 Crowley
+     97814 Edgerton
+     97066 Espinel
+     94018 Favreau
+
+    SALARY NAME
+---------- -------------------------
+     85662 Gardaphe
+     91500 Gottry
+     89939 Grant
+     81272 Harper
+     85088 Hurwitz
+     88192 Kravis
+     95168 Lerner
+     81903 Naidoff
+     84009 Narechania
+     80113 Rittner
+     99940 Roach
+
+    SALARY NAME
+---------- -------------------------
+     98052 Samuels
+     95190 Trainor
+     97147 Becnel
+     88406 Bond
+     84880 Branch
+     94974 Emanuel
+     86286 Faulman
+     86448 Hegde
+     89879 Hiatt
+     86968 Krass
+     86836 Lartey
+
+    SALARY NAME
+---------- -------------------------
+     96002 Lezotte
+     96610 Liegel
+     88159 Maska
+     94794 Pfeiffer
+     82786 Phadke
+     83966 Pulliam
+     93026 Stickel
+     96019 Stoev
+     85069 Teehee
+     87741 Terrell
+     83982 Anderson
+
+    SALARY NAME
+---------- -------------------------
+     97135 Beinart
+     84408 Blake
+     81489 Chambers
+     82939 Coven
+     81647 DeGuzman
+     84769 Fenn
+     88648 Fitts
+     80614 Jabbour
+     86379 Kalbaugh
+     84351 Levine
+     81772 Watkins
+
+    SALARY NAME
+---------- -------------------------
+     98122 Young
+     81259 Zelman
+     85293 Markovitz
+     97089 McBride
+     98272 McNeal
+     86640 Monteiro
+     96301 Neiman
+     97674 Ocampo
+     98332 Rivadeneira
+     86616 Robertson
+     84771 Rosalsky
+
+    SALARY NAME
+---------- -------------------------
+     81476 Sabochik
+     86834 Sanders
+     86355 Swire
+     81858 Dyer
+     89520 Garcia
+     99987 Hornsby
+     86790 Jamison
+     91257 Kramer
+     95434 Lepow
+     87144 Lorjuste
+     93664 Wang-Levine
+
+    SALARY NAME
+---------- -------------------------
+     94442 McCathran
+     93848 Millison
+     84477 Moilanen
+     82653 Nabors
+     89258 Nelson
+     99414 Tate-Gilmore
+     98319 Bernard
+     91658 Campoverdi
+     98260 Castillo
+     86999 Chhabra
+     85888 Conrad
+
+    SALARY NAME
+---------- -------------------------
+     97630 Droege
+     86194 Fernkas
+     95703 Godfrey
+     95559 Greenawalt
+     89464 Jarvis
+     85746 Jones
+     83021 Jung
+     92247 Kumar
+     81998 Lechtenberg
+     84384 Lesser
+     86203 Lipton
+
+    SALARY NAME
+---------- -------------------------
+     83692 Walsh
+     91420 Luck
+     89300 Mack
+     81441 Perez
+     95700 Roberts
+     86888 Smith
+     90082 Sobel
+     98430 Tseggai
+     86506 Utech
+     99376 Vega
+     85160 Amorsingh
+
+    SALARY NAME
+---------- -------------------------
+     83456 Baggetto
+     92409 Bisi
+     94390 Block
+     95472 Bookey-Baker
+     89680 Canery
+     92056 Dale
+     82206 Finkenbinder
+     91723 Hable
+     97462 Kang
+     90677 Lipsky
+     83759 Williams
+
+    SALARY NAME
+---------- -------------------------
+     90225 Wong
+
+166 rows selected.
+
+Create or Replace FUNCTION getEmpSalary(p_name in VARCHAR)
+
+Return NUMBER IS
+
+	l_salary AlphaCoEmp.salary%type;     -- Give the data type
+	
+BEGIN
+
+	Select salary into l_salary
+	from AlphaCoEmp 
+	WHERE name = p_name;
+	
+			 
+   	return l_salary;
+END;
+/
+show errors;
+
+-- to test
+Select getEmpSalary('') From Dual;
+
+Function created.
+
+No errors.
+
+GETEMPSALARY('')
+----------------
+
+
+
+
+
+
+
+
+
+

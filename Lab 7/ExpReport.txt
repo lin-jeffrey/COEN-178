@@ -1,0 +1,21 @@
+SP2-0311: string expected but not found
+
+                                                     Expense Report                                                     
+CDATE           FOOD    COMMUTE       MISC                                                                              
+--------- ---------- ---------- ----------                                                                              
+21-OCT-19         30          7         13                                                                              
+23-OCT-19         20          2         18                                                                              
+08-NOV-03         23          3         16                                                                              
+30-DEC-14         43          6         12                                                                              
+23-FEB-30         12          5         23                                                                              
+26-JAN-24         28          8         19                                                                              
+
+
+
+
+
+
+
+
+
+                                                       Jeffrey Lin                                                      
